@@ -10,6 +10,7 @@ import java.util.Map;
 public class SpeciesListStage implements AdventureStage {
 
     // Honestly I just find O'Reilly's animals to be really cool
+    // space in input question!!!
     private static final List<String> REFERENCE_1 = List.of(
             "leopards",     // Reactive Systems in Java
             "bison"         // Java EXTREME Programming Cookbook
@@ -89,7 +90,7 @@ public class SpeciesListStage implements AdventureStage {
     /**
      * Computes the proportion of objects in listOne that appear in listTwo. If an
      * object appears multiple times in listOne, it will be counted at most as many
-     * times as it appears in listTwo.
+     * times as it appears in listTwo.(only once, because copy.remove(o))
      *
      * @param listOne list of items to look for
      * @param listTwo list to check containment in
@@ -99,6 +100,9 @@ public class SpeciesListStage implements AdventureStage {
     public static double arraySimilarity(List<String> listOne, List<String> listTwo) {
         List<String> copy = new ArrayList<>(listOne);
         int similarObjects = 0;
+        if (copy.size() == 0) {
+            return 0;
+        }
         for (String o : listTwo) {
             if (copy.contains(o)) {
                 similarObjects++;
